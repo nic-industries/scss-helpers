@@ -1,0 +1,13 @@
+{
+  "name": "@nic-industries/scss-helpers",
+  "version": "1.0.0",
+  "description": "A collection of SCSS helpers",
+  "repository": "https://github.com/nic-industries/scss-helpers",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "keywords": ["sass", "scss", "css", "helpers"],
+  "author": {
+    "name": "Sebastian Inman",
+    "email": "sebastian@nicindustries.com"
+  },
+  "license": "ISC"
+}
