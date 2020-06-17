@@ -1,0 +1,183 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media only screen and (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form,
+label, legend, table, caption, tbody, tfoot, thead,
+tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu,
+nav, output, ruby, section, summary, time, mark,
+audio, video {
+  font-size: $Settings\Text\Scale;
+  vertical-align: baseline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+html {
+  -webkit-text-size-adjust: $Settings\Text\Scale;
+  -webkit-overflow-scrolling: touch;
+  line-height: 1.15;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $Color\Background\Body;
+  text-rendering: $Settings\Text\Render;
+  font-family: $Font\Family\Default;
+  scroll-behavior: smooth;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100vh;
+  font-weight: 500;
+  display: flex;
+  &[aria-haspopup] {
+    // Include right padding to accomodate for the extra
+    // space removing the body scrollbar creates.
+    @include Convert\Pixel-Rem(padding-right, 17px);
+    overflow: hidden;
+    max-height: 100vh;
+    user-select: none;
+  }
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 60%;
+  line-height: 0;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+sup {
+  vertical-align: super;
+}
+
+embed, iframe, img,
+object, video, figure {
+  max-width: 100%;
+  display: block;
+}
+
+table {
+  width: 100%;
+  th {
+    text-align: left;
+  }
+}
+
+label {
+  user-select: none;
+}
+
+figure {
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  > img {
+    object-fit: cover;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+img[lazy=loading] {
+  height: auto;
+  width: auto;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+input, button,
+select, textarea {
+  letter-spacing: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+textarea {
+  vertical-align: top;
+  resize: vertical;
+  overflow: auto;
+}
+
+button,
+[type=button],
+[type=submit],
+[type=reset] {
+  -webkit-appearance: button;
+}
+
+button, select {
+  text-transform: none;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+}
+
+[contenteditable=true] {
+  &:empty::before {
+    content: attr(placeholder);
+    cursor: text;
+  }
+}
+
+.hidden,
+[hidden],
+[aria-hidden] {
+  pointer-events: none !important;
+  user-select: none !important;
+  &:not(.fa):not(.fas):not(.far):not(.fab) {
+    visibility: hidden !important;
+    display: none !important;
+  }
+}
+
+.disabled,
+[disabled],
+[aria-disabled] {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+  user-select: none !important;
+  opacity: 0.365 !important;
+}
