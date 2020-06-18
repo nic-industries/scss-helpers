@@ -1,6 +1,6 @@
 {
   "name": "@nic-industries/scss-helpers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collection of SCSS helpers",
   "repository": "git://github.com/nic-industries/scss-helpers.git",
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
