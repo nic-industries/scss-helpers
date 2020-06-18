@@ -1,93 +1,78 @@
 // Padding & Margins
 // ===================================
 
-$max: 24;
-$pixels: 4px;
+$Scalar\Base: 4;
+$Scalar\Multipliers: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64);
 
-@for $i from 0 through $max {
-  .pb-#{$i} { padding-bottom: $i * $pixels; }
-  .pr-#{$i} { padding-right: $i * $pixels; }
-  .pl-#{$i} { padding-left: $i * $pixels; }
-  .pt-#{$i} { padding-top: $i * $pixels; }
-  .mb-#{$i} { margin-bottom: $i * $pixels; }
-  .mr-#{$i} { margin-right: $i * $pixels; }
-  .ml-#{$i} { margin-left: $i * $pixels; }
-  .mt-#{$i} { margin-top: $i * $pixels; }
+@each $prefix, $breakpoint in (
+  '':    $Viewport\XS,
+  'sm:': $Viewport\SM,
+  'md:': $Viewport\MD,
+  'lg:': $Viewport\LG,
+  'xl:': $Viewport\XL
+) {
+  @include Viewport\Min($breakpoint) {
+
+    // Generate auto margin classes.
+    .#{$prefix}mb-auto { margin-bottom: auto; }
+    .#{$prefix}mr-auto { margin-right: auto; }
+    .#{$prefix}ml-auto { margin-left: auto; }
+    .#{$prefix}mt-auto { margin-top: auto; }
+    .#{$prefix}mx-auto { @extend .#{$prefix}ml-auto, .#{$prefix}mr-auto; }
+    .#{$prefix}my-auto { @extend .#{$prefix}mt-auto, .#{$prefix}mb-auto; }
+
+    @each $i in $Scalar\Multipliers {
+
+      // Generate font size classes.
+      .#{$prefix}font-size-#{$i} { @include Convert\Pixel-Rem(font-size, ($i / $Scalar\Base) * $Base\Font\Size); }
+
+      // Generate padding classes.
+      .#{$prefix}pb-#{$i} { @include Convert\Pixel-Rem(padding-bottom, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}pr-#{$i} { @include Convert\Pixel-Rem(padding-right, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}pl-#{$i} { @include Convert\Pixel-Rem(padding-left, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}pt-#{$i} { @include Convert\Pixel-Rem(padding-top, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}px-#{$i} { @extend .#{$prefix}pl-#{$i}, .#{$prefix}pr-#{$i}; }
+      .#{$prefix}py-#{$i} { @extend .#{$prefix}pt-#{$i}, .#{$prefix}pb-#{$i}; }
+
+      // Generate margin classes.
+      .#{$prefix}mb-#{$i} { @include Convert\Pixel-Rem(margin-bottom, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}mr-#{$i} { @include Convert\Pixel-Rem(margin-right, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}ml-#{$i} { @include Convert\Pixel-Rem(margin-left, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}mt-#{$i} { @include Convert\Pixel-Rem(margin-top, ($i / $Scalar\Base) * $Base\Font\Size); }
+      .#{$prefix}mx-#{$i} { @extend .#{$prefix}ml-#{$i}, .#{$prefix}mr-#{$i}; }
+      .#{$prefix}my-#{$i} { @extend .#{$prefix}mt-#{$i}, .#{$prefix}mb-#{$i}; }
+
+    }
+
+    // Generate display classes.
+    @each $display in ('inline', 'block', 'inline-block', 'flex', 'inline-flex', 'grid', 'none') {
+      .#{$prefix}display-#{$display} { display: $display; }
+    }
+
+    // Generate visibility classes.
+    @each $visibility in ('visible', 'hidden') {
+      .#{$prefix}visibility-#{$visibility} { visibility: $visibility; }
+    }
+
+    // Generate justify-content classes.
+    @each $justify in ('flex-start', 'flex-end', 'center', 'space-between', 'space-around') {
+      .#{$prefix}justify-#{$justify} { justify-content: $justify; }
+    }
+
+    // Generate align-items classes.
+    @each $alignment in ('flex-start', 'flex-end', 'center', 'baseline', 'stretch') {
+      .#{$prefix}items-#{$alignment} { align-items: $alignment; }
+    }
+
+    .#{$prefix}flex-column {
+      @extend .#{$prefix}display-flex;
+      flex-direction: column;
+    }
+
+    .#{$prefix}flex-row {
+      @extend .#{$prefix}display-flex;
+      flex-direction: row;
+    }
+
   }
-
-@include Viewport\Min($Viewport\SM) {
-  @for $i from 0 through $max {
-  .sm\:pb-#{$i} { padding-bottom: $i * $pixels; }
-  .sm\:pr-#{$i} { padding-right: $i * $pixels; }
-  .sm\:pl-#{$i} { padding-left: $i * $pixels; }
-  .sm\:pt-#{$i} { padding-top: $i * $pixels; }
-  .sm\:mb-#{$i} { margin-bottom: $i * $pixels; }
-  .sm\:mr-#{$i} { margin-right: $i * $pixels; }
-  .sm\:ml-#{$i} { margin-left: $i * $pixels; }
-  .sm\:mt-#{$i} { margin-top: $i * $pixels; }
-  }
-}
-
-@include Viewport\Min($Viewport\MD) {
-  @for $i from 0 through $max {
-  .md\:pb-#{$i} { padding-bottom: $i * $pixels; }
-  .md\:pr-#{$i} { padding-right: $i * $pixels; }
-  .md\:pl-#{$i} { padding-left: $i * $pixels; }
-  .md\:pt-#{$i} { padding-top: $i * $pixels; }
-  .md\:mb-#{$i} { margin-bottom: $i * $pixels; }
-  .md\:mr-#{$i} { margin-right: $i * $pixels; }
-  .md\:ml-#{$i} { margin-left: $i * $pixels; }
-  .md\:mt-#{$i} { margin-top: $i * $pixels; }
-  }
-}
-
-@include Viewport\Min($Viewport\LG) {
-  @for $i from 0 through $max {
-  .lg\:pb-#{$i} { padding-bottom: $i * $pixels; }
-  .lg\:pr-#{$i} { padding-right: $i * $pixels; }
-  .lg\:pl-#{$i} { padding-left: $i * $pixels; }
-  .lg\:pt-#{$i} { padding-top: $i * $pixels; }
-  .lg\:mb-#{$i} { margin-bottom: $i * $pixels; }
-  .lg\:mr-#{$i} { margin-right: $i * $pixels; }
-  .lg\:ml-#{$i} { margin-left: $i * $pixels; }
-  .lg\:mt-#{$i} { margin-top: $i * $pixels; }
-  }
-}
-
-@include Viewport\Min($Viewport\XL) {
-  @for $i from 0 through $max {
-  .xl\:pb-#{$i} { padding-bottom: $i * $pixels; }
-  .xl\:pr-#{$i} { padding-right: $i * $pixels; }
-  .xl\:pl-#{$i} { padding-left: $i * $pixels; }
-  .xl\:pt-#{$i} { padding-top: $i * $pixels; }
-  .xl\:mb-#{$i} { margin-bottom: $i * $pixels; }
-  .xl\:mr-#{$i} { margin-right: $i * $pixels; }
-  .xl\:ml-#{$i} { margin-left: $i * $pixels; }
-  .xl\:mt-#{$i} { margin-top: $i * $pixels; }
-  }
-}
-
-
-
-
-.align-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  @extend .flex;
-  flex-direction: column;
-}
-
-.flex-row {
-  @extend .flex;
-  flex-direction: row;
 }

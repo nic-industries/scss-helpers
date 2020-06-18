@@ -53,7 +53,7 @@ body {
   font-weight: 500;
   display: flex;
   &[aria-haspopup] {
-    // Include right padding to accomodate for the extra
+    // Include right padding to accommodate for the extra
     // space removing the body scrollbar creates.
     @include Convert\Pixel-Rem(padding-right, 17px);
     overflow: hidden;
