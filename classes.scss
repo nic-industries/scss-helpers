@@ -1,5 +1,4 @@
-// Padding & Margins
-// ===================================
+$prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG, 'xl\\:': $Viewport\XL);
 
 @mixin Classes($prefix: '') {
 
@@ -38,23 +37,23 @@
   }
 
   // Generate display classes.
-  @each $display in ('inline', 'block', 'inline-block', 'flex', 'inline-flex', 'grid', 'none') {
-    .#{$prefix}display-#{$display} { display: $display; }
+  @each $value in ('inline', 'block', 'inline-block', 'flex', 'inline-flex', 'grid', 'none') {
+    .#{$prefix}display-#{$value} { display: $value; }
   }
 
   // Generate visibility classes.
-  @each $visibility in ('visible', 'hidden') {
-    .#{$prefix}visibility-#{$visibility} { visibility: $visibility; }
+  @each $value in ('visible', 'hidden') {
+    .#{$prefix}visibility-#{$value} { visibility: $value; }
   }
 
   // Generate justify-content classes.
-  @each $justify in ('flex-start', 'flex-end', 'center', 'space-between', 'space-around') {
-    .#{$prefix}justify-#{$justify} { justify-content: $justify; }
+  @each $value in ('flex-start', 'flex-end', 'center', 'space-between', 'space-around') {
+    .#{$prefix}justify-#{$value} { justify-content: $value; }
   }
 
   // Generate align-items classes.
-  @each $alignment in ('flex-start', 'flex-end', 'center', 'baseline', 'stretch') {
-    .#{$prefix}items-#{$alignment} { align-items: $alignment; }
+  @each $value in ('flex-start', 'flex-end', 'center', 'baseline', 'stretch') {
+    .#{$prefix}items-#{$value} { align-items: $value; }
   }
 
   .#{$prefix}flex-column {
@@ -70,6 +69,7 @@
 }
 
 @include Classes();
-@each $prefix, $breakpoint in ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG, 'xl\\:': $Viewport\XL) {
+
+@each $prefix, $breakpoint in $prefixes {
   @include Viewport\Min($breakpoint) { @include Classes($prefix); }
 }
