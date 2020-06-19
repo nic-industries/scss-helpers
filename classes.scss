@@ -70,6 +70,6 @@
 }
 
 @include Classes();
-@each $prefix, $breakpoint in ('sm\:': $Viewport\SM, 'md\:': $Viewport\MD, 'lg\:': $Viewport\LG, 'xl\:': $Viewport\XL) {
+@each $prefix, $breakpoint in ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG, 'xl\\:': $Viewport\XL) {
   @include Viewport\Min($breakpoint) { @include Classes($prefix); }
 }
