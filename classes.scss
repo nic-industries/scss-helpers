@@ -37,22 +37,22 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
   }
 
   // Generate display classes.
-  @each $value in ('inline', 'block', 'inline-block', 'flex', 'inline-flex', 'grid', 'none') {
+  @each $value in (inline, block, inline-block, flex, inline-flex, grid, none) {
     .#{$prefix}display-#{$value} { display: $value; }
   }
 
   // Generate visibility classes.
-  @each $value in ('visible', 'hidden') {
+  @each $value in (visible, hidden) {
     .#{$prefix}visibility-#{$value} { visibility: $value; }
   }
 
   // Generate justify-content classes.
-  @each $value in ('flex-start', 'flex-end', 'center', 'space-between', 'space-around') {
+  @each $value in (flex-start, flex-end, center, space-between, space-around) {
     .#{$prefix}justify-#{$value} { justify-content: $value; }
   }
 
   // Generate align-items classes.
-  @each $value in ('flex-start', 'flex-end', 'center', 'baseline', 'stretch') {
+  @each $value in (flex-start, flex-end, center, baseline, stretch) {
     .#{$prefix}items-#{$value} { align-items: $value; }
   }
 
