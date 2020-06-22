@@ -36,6 +36,11 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
 
   }
 
+  // Generate font-weight classes.
+  @each $value in (200, 300, 400, 500, 600, 700) {
+    .#{$prefix}font-weight-#{$value} { font-weight: $value; }
+  }
+
   // Generate display classes.
   @each $value in (inline, block, inline-block, flex, inline-flex, grid, none) {
     .#{$prefix}display-#{$value} { display: $value; }
