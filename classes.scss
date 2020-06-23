@@ -87,9 +87,15 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
   }
 
   @each $color, $value in $Colors {
+
+    // Background colors.
     .#{$prefix}background-#{$color},
     .#{$prefix}bg-#{$color} { background-color: $value; }
-    .#{$prefix}text-#{$color} { color: $value; }
+
+    // Text colors.
+    .#{$prefix}text-#{$color},
+    .#{$prefix}color-#{$color}{ color: $value; }
+
   }
 
 }
