@@ -1,11 +1,5 @@
 :root {
   @each $color, $value in $Colors {
-
-    --background-#{$color}: #{$value};
-    --bg-#{$color}: #{$value};
-
     --color-#{$color}: #{$value};
-    --text-#{$color}: #{$value};
-
   }
 }
