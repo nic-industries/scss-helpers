@@ -17,6 +17,7 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
 
     // Generate font size classes.
     .#{$prefix}font-size-#{$i} { @include Convert\Pixel-Rem(font-size, ($i / $Scalar\Base) * $Base\Font\Size); }
+    .#{$prefix}text-#{$i} { @extend .#{$prefix}font-size-#{$i}; }
 
     // Generate padding classes.
     .#{$prefix}pb-#{$i} { @include Convert\Pixel-Rem(padding-bottom, ($i / $Scalar\Base) * $Base\Font\Size); }
@@ -38,7 +39,8 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
 
   // Generate font-weight classes.
   @each $value in (200, 300, 400, 500, 600, 700) {
-    .#{$prefix}font-weight-#{$value} { font-weight: $value; }
+    .#{$prefix}font-weight-#{$value},
+    .#{$prefix}text-#{$value} { font-weight: $value; }
   }
 
   // Generate display classes.
@@ -46,9 +48,22 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
     .#{$prefix}display-#{$value} { display: $value; }
   }
 
+  // Generate position classes.
+  @each $value in (relative, absolute, fixed, static, sticky) {
+    .#{$prefix}position-#{$value},
+    .#{$prefix}#{$value} { position: $value; }
+  }
+
+  // Generate text-align classes.
+  @each $value in (left, right, center, justify) {
+    .#{$prefix}text-align-#{$value},
+    .#{$prefix}text-#{$value} { text-align: $value; }
+  }
+
   // Generate visibility classes.
   @each $value in (visible, hidden) {
-    .#{$prefix}visibility-#{$value} { visibility: $value; }
+    .#{$prefix}visibility-#{$value},
+    .#{$prefix}vis-#{$value} { visibility: $value; }
   }
 
   // Generate justify-content classes.
@@ -69,6 +84,14 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
   .#{$prefix}flex-row {
     @extend .#{$prefix}display-flex;
     flex-direction: row;
+  }
+
+  @if variable_exists($Colors) {
+    @each $color, $value in $Colors {
+      .#{$prefix}background-#{$color},
+      .#{$prefix}bg-#{$color} { background-color: $value; }
+      .#{$prefix}text-#{$color} { color: $value; }
+    }
   }
 
 }
