@@ -1,5 +1,12 @@
 :root {
+
   @each $color, $value in $Colors {
     --color-#{$color}: #{$value};
+
+    @each $shade, $value in Color\Shades($value) {
+      --color-#{$color}-#{$shade}: #{$value};
+    }
+
   }
+
 }

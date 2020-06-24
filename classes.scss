@@ -94,7 +94,19 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
 
     // Text colors.
     .#{$prefix}text-#{$color},
-    .#{$prefix}color-#{$color}{ color: $value; }
+    .#{$prefix}color-#{$color} { color: $value; }
+
+    @each $shade, $value in Color\Shades($value) {
+
+      // Background colors.
+      .#{$prefix}background-#{$color}-#{$shade},
+      .#{$prefix}bg-#{$color}-#{$shade} { background-color: $value; }
+
+      // Text colors.
+      .#{$prefix}text-#{$color}-#{$shade},
+      .#{$prefix}color-#{$color}-#{$shade} { color: $value; }
+
+    }
 
   }
 
