@@ -86,11 +86,21 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
     flex-direction: row;
   }
 
+  .#{$prefix}background-none,
+  .#{$prefix}bg-none { background-color: transparent; }
+
+  .#{$prefix}border-none { border-color: transparent; }
+
+  .#{$prefix}text-none,
+  .#{$prefix}color-none { color: transparent; }
+
   @each $color, $value in $Colors {
 
     // Background colors.
     .#{$prefix}background-#{$color},
     .#{$prefix}bg-#{$color} { background-color: $value; }
+
+    .#{$prefix}border-#{$color} { border-color: $value; }
 
     // Text colors.
     .#{$prefix}text-#{$color},
@@ -101,6 +111,9 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
       // Background colors.
       .#{$prefix}background-#{$color}-#{$shade},
       .#{$prefix}bg-#{$color}-#{$shade} { background-color: $value; }
+
+      // Border colors.
+      .#{$prefix}border-#{$color}-#{$shade} { border-color: $value; }
 
       // Text colors.
       .#{$prefix}text-#{$color}-#{$shade},
