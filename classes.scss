@@ -26,6 +26,7 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
     .#{$prefix}pt-#{$i} { @include Convert\Pixel-Rem(padding-top, ($i / $Scalar\Base) * $Base\Font\Size); }
     .#{$prefix}px-#{$i} { @extend .#{$prefix}pl-#{$i}, .#{$prefix}pr-#{$i}; }
     .#{$prefix}py-#{$i} { @extend .#{$prefix}pt-#{$i}, .#{$prefix}pb-#{$i}; }
+    .#{$prefix}p-#{$i}  { @extend .#{$prefix}px-#{$i}, .#{$prefix}py-#{$i}; }
 
     // Generate margin classes.
     .#{$prefix}mb-#{$i} { @include Convert\Pixel-Rem(margin-bottom, ($i / $Scalar\Base) * $Base\Font\Size); }
@@ -34,6 +35,7 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
     .#{$prefix}mt-#{$i} { @include Convert\Pixel-Rem(margin-top, ($i / $Scalar\Base) * $Base\Font\Size); }
     .#{$prefix}mx-#{$i} { @extend .#{$prefix}ml-#{$i}, .#{$prefix}mr-#{$i}; }
     .#{$prefix}my-#{$i} { @extend .#{$prefix}mt-#{$i}, .#{$prefix}mb-#{$i}; }
+    .#{$prefix}m-#{$i}  { @extend .#{$prefix}mx-#{$i}, .#{$prefix}my-#{$i}; }
 
   }
 
