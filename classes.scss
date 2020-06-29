@@ -40,14 +40,14 @@ $prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG,
   }
 
   // Generate width classes.
-  .#{$prefix}w-0 { width: 0; }
+  .#{$prefix}w-0 { width: 0; max-width: 0; }
   .#{$prefix}w-100,
-  .#{$prefix}w-full { width: 100%; }
+  .#{$prefix}w-full { width: 100%; min-width: 100%; }
 
   // Generate height classes.
-  .#{$prefix}h-0 { height: 0; }
+  .#{$prefix}h-0 { height: 0; min-height: 0; }
   .#{$prefix}h-100,
-  .#{$prefix}h-full { height: 100%; }
+  .#{$prefix}h-full { height: 100%; min-height: 100%; }
 
   // Generate font-weight classes.
   @each $value in (200, 300, 400, 500, 600, 700) {
