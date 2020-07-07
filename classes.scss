@@ -1,5 +1,3 @@
-$prefixes: ('sm\\:': $Viewport\SM, 'md\\:': $Viewport\MD, 'lg\\:': $Viewport\LG, 'xl\\:': $Viewport\XL);
-
 @mixin Classes($prefix: '') {
 
   $Scalar\Base: 4;
