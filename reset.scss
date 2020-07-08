@@ -36,6 +36,7 @@ audio, video {
 html {
   -webkit-text-size-adjust: $Settings\Text\Scale;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
   line-height: 1.15;
 }
 
@@ -120,7 +121,7 @@ img[lazy=loading] {
   width: auto;
 }
 
-ol, ul {
+ul {
   list-style: none;
 }
 
